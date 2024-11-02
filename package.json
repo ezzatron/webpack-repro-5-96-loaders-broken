@@ -1,11 +1,13 @@
 {
   "private": true,
-  "type": "module",
   "scripts": {
-    "repro": "echo hi"
+    "repro": "webpack && node dist/main.js"
   },
   "dependencies": {
-    "webpack": "^5.96.1",
+    "webpack": "5.96.1",
     "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }

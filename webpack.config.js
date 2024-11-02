@@ -1,11 +1,24 @@
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
+const { join } = require("path");
 
-export default {
-  mode: 'production',
-  entry: './src/index.js',
+module.exports = {
+  mode: "production",
+  entry: "./src/index.js",
   output: {
-    filename: 'main.js',
-    path: join(dirname(fileURLToPath(import.meta.url)), 'dist'),
+    assetModuleFilename: "[name].public[ext]",
+    filename: "main.js",
+    path: join(__dirname, "dist"),
+    publicPath: "/",
+  },
+  module: {
+    rules: [
+      {
+        test: /txt$/,
+        type: "asset/resource",
+      },
+      {
+        test: /\/asset\.json$/,
+        use: join(__dirname, "src/loader.js"),
+      },
+    ],
   },
 };
